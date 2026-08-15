@@ -1,15 +1,20 @@
 <div align="center">
 
+<img src="./docs/cover.svg" alt="Africa SaaS Starter" width="100%" />
+
 # Africa SaaS Starter
 
 ### A production-minded SaaS foundation built with Next.js, TypeScript and Supabase.
 
 **Auth · Multi-tenancy · Roles · Dashboard · Billing model · Email · RLS · Docker · CI**
 
+[![CI](https://github.com/popytech/africa-saas-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/popytech/africa-saas-starter/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-Postgres-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![License](https://img.shields.io/badge/License-MIT-111111?style=for-the-badge)](./LICENSE)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpopytech%2Fafrica-saas-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY&project-name=africa-saas-starter&repository-name=africa-saas-starter)
 
 </div>
 
@@ -19,7 +24,7 @@
 
 Many SaaS projects begin by rebuilding the same foundation: authentication, protected routes, organizations, roles, database policies, settings, billing concepts, transactional email and deployment plumbing.
 
-**Africa SaaS Starter** packages those building blocks into a clean reference implementation. It is designed for developers building products in Africa and elsewhere, with particular attention to pragmatic deployment, intermittent infrastructure constraints, simple vendor boundaries and maintainable application architecture.
+**Africa SaaS Starter** packages those building blocks into a clean reference implementation. It is designed for developers building products in Africa and elsewhere, with particular attention to pragmatic deployment, simple vendor boundaries and maintainable application architecture.
 
 > This is an open-source starter, not a payment gateway, telecom integration or hosted SaaS product.
 
@@ -66,7 +71,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Create a Supabase project, add the values from the **Connect** dialog to `.env.local`, then run the SQL migration in `supabase/migrations/0001_init.sql`.
+Create a Supabase project, add the values from the **Connect** dialog to `.env.local`, then apply the SQL migrations in order from `supabase/migrations/`.
 
 Open `http://localhost:3000`.
 
@@ -108,7 +113,13 @@ Each customer can belong to one or more organizations. Memberships carry one of 
 - `admin`
 - `member`
 
-The migration provides helper functions and RLS policies so organization data is visible only to members.
+The migrations provide private helper functions and RLS policies so organization data is visible only to authorized members.
+
+## Security baseline
+
+The reference Supabase schema has been validated with Supabase's database security advisors after deployment. `SECURITY DEFINER` helpers are isolated from the exposed `public` API schema and tenant tables use RLS.
+
+See [`SECURITY.md`](./SECURITY.md) for production guidance.
 
 ## Billing
 
@@ -127,20 +138,22 @@ npm test
 npm run build
 ```
 
-The same checks run in GitHub Actions.
+The same checks run in GitHub Actions. The current `main` branch passes the complete quality pipeline.
 
 ## Deployment
 
-The app can run on Vercel or any Node.js/Docker platform. See [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
+The app can run on Vercel or any Node.js/Docker platform.
 
-## Security
+Use the **Deploy with Vercel** button above or see [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
 
-Read [`SECURITY.md`](./SECURITY.md) before using the starter for production workloads. In particular:
+Required production variables:
 
-- never expose the Supabase service-role key to the browser;
-- keep RLS enabled on tenant data;
-- verify server-side identity for protected operations;
-- rotate credentials if they are ever committed.
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+```
+
+Optional email variables are documented in `.env.example`.
 
 ## Roadmap
 
@@ -166,5 +179,7 @@ MIT — use it, adapt it and build useful products with it.
 <div align="center">
 
 Built by **Popy Traoré** · Guinea 🇬🇳 → Africa 🌍
+
+**Build useful things. Build for scale. Build for Africa.**
 
 </div>
