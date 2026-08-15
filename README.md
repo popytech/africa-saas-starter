@@ -8,11 +8,14 @@
 
 **Auth · Multi-tenancy · Roles · Dashboard · Billing model · Email · RLS · Docker · CI**
 
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-africa--saas--starter.vercel.app-2ea44f?style=for-the-badge&logo=vercel&logoColor=white)](https://africa-saas-starter.vercel.app/)
 [![CI](https://github.com/popytech/africa-saas-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/popytech/africa-saas-starter/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-Postgres-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 [![License](https://img.shields.io/badge/License-MIT-111111?style=for-the-badge)](./LICENSE)
+
+**→ [Open the live demo](https://africa-saas-starter.vercel.app/)**
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpopytech%2Fafrica-saas-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY&project-name=africa-saas-starter&repository-name=africa-saas-starter)
 
@@ -141,6 +144,10 @@ npm run build
 The same checks run in GitHub Actions. The current `main` branch passes the complete quality pipeline.
 
 ## Deployment
+
+### Live demo
+
+Production URL: **[https://africa-saas-starter.vercel.app/](https://africa-saas-starter.vercel.app/)**
 
 The app can run on Vercel or any Node.js/Docker platform.
 
